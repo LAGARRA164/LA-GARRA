@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Menú - LA GARRA</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #fff;
+      background: linear-gradient(to bottom, #000000, #FF8C00);
+      text-align: center;
+    }
+
+    /* Transiciones generales */
+    .fade {
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+      pointer-events: none;
+    }
+
+    .fade.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .welcome {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      padding: 20px;
+    }
+
+    .logo-bienvenida {
+      max-width: 250px;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    .welcome h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .welcome button {
+      background-color: #FF8C00;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .welcome button:hover {
+      background-color: #e67600;
+    }
+
+    #contenido {
+      display: none;
+    }
+
+    header {
+      background: linear-gradient(to bottom, #000000, #FF8C00);
+      color: white;
+      padding: 1.5em 1em 1em;
+    }
+
+    header img {
+      max-width: 300px;
+      width: 100%;
+      height: auto;
+      margin-bottom: 0.5em;
+    }
+
+    nav {
+      margin-top: 15px;
+    }
+
+    nav button {
+      background-color: white;
+      color: #FF8C00;
+      border: none;
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    nav button:hover {
+      background-color: #ffdbb0;
+    }
+
+    .phone {
+      font-weight: bold;
+    }
+
+    .section {
+      display: none;
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
+
+    .item, .locations {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 1em;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      color: #333;
+    }
+
+    .item h2, .locations h2 {
+      margin-top: 0;
+    }
+
+    .price {
+      color: #FF8C00;
+      font-weight: bold;
+    }
+
+    .locations ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .locations li {
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Pantalla de bienvenida -->
+  <div class="welcome fade show" id="welcome">
+    <img src="https://i.postimg.cc/k41Fm3j2/lagarra.webp" alt="Logo LA GARRA" class="logo-bienvenida" />
+    <h1>Bienvenido al menú de la hamburguesería LA GARRA</h1>
+    <button onclick="ingresar()">Ingresar</button>
+  </div>
+
+  <!-- Contenido principal -->
+  <div id="contenido" class="fade">
+    <header>
+      <img src="https://i.postimg.cc/k41Fm3j2/lagarra.webp" alt="Logo LA GARRA" />
+      <h1>🍔 LA GARRA</h1>
+      <p>¡Nuestro delicioso menú!</p>
+  
+      <p class="phone">📞 Teléfono: <a href="https://wa.me/51927642164?text=Hola,%20quiero%20hacer%20un%20pedido" target="_blank" style="color: #fff; text-decoration: underline;">927642164</a></p>
+
+
+      <nav>
+        <button onclick="mostrarSeccion('menu')">Ver Menú</button>
+        <button onclick="mostrarSeccion('ubicaciones')">Ver Ubicaciones</button>
+        <button onclick="mostrarSeccion('pagos')">Ver Métodos de Pago</button>
+        <button onclick="mostrarSeccion('comentarios')">Comentarios</button>
+      </nav>
+    </header>
+
+    <!-- Sección MENÚ -->
+    <div class="section fade" id="menu">
+      <div class="item">
+        <h2>CHILI DE POLLO</h2>
+        <p>Hamburguesa de pollo con huevo, papas fritas, lechuga, tomate y cremas a elegir.</p>
+        <p class="price">S/ 5.00</p>
+      </div>
+      <div class="item">
+        <h2>CHILI DE CARNE</h2>
+        <p>Hamburguesa de carne con queso, papas fritas, lechuga, tomate y cremas a elegir.</p>
+        <p class="price">S/ 5.00</p>
+      </div>
+      <div class="item">
+        <h2>MAX</h2>
+        <p>Hamburguesa con carne/pollo, huevo, chorizo, queso, papas fritas, lechuga, tomate y cremas a elegir.</p>
+        <p class="price">S/ 6.00</p>
+      </div>
+      <div class="item">
+        <h2>CHAX</h2>
+        <p>La hamburguesa más intensa: carne/pollo, huevo, chorizo, queso, hot dog, papas fritas, lechuga, tomate y cremas.</p>
+        <p class="price">S/ 7.00</p>
+      </div>
+    </div>
+
+    <!-- Sección UBICACIONES -->
+    <!-- Sección UBICACIONES -->
+<!-- Sección UBICACIONES -->
+<div class="section fade" id="ubicaciones">
+  <div class="locations">
+    <h2>SOLO LAMBAYEQUE</h2>
+    <h2>📍 Ubicaciones no disponibles</h2>
+    <p style="color: red; font-weight: bold;">🚫 No disponible para delivery en estas direcciones.</p>
+    <ul>
+      <li>
+        📌 <strong>Calle los Diamantes y Molsave Baca</strong>, (hacia atrás)
+      </li>
+      <li>
+        📌 <strong>Calle Piura cuadra 1 y Malecón Ureta</strong>, (hacia atrás)
+      </li>
+      <li>
+        📌 <strong>Calle Emiliano Niño la última</strong>, (hacia atrás)
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- Sección PAGOS -->
+<div class="section fade" id="pagos">
+  <div class="locations">
+    <h2>Métodos de Pago</h2>
+    <p>Escanea el siguiente código QR para realizar tu pago vía yape o plin:</p>
+    <img src="https://i.postimg.cc/Yq0h8mX7/qr-izapay.jpg" alt="QR de pago" style="max-width: 300px; width: 100%; margin: 20px 0;" />
+    <p><strong>Nombre:</strong> LA GARRA</p>
+    <p><strong>Celular:</strong> <a href="https://wa.me/51927642164?text=Hola,%20quiero%20hacer%20un%20pedido" target="_blank">927642164</a></p>
+    <p>💬 Enviar captura del pago por WhatsApp después de escanear.</p>
+    
+
+  </div>
+</div>
+<!-- Sección COMENTARIOS -->
+<div class="section fade" id="comentarios">
+  <div class="locations">
+    <h2>🗣️ Deja tu comentario</h2>
+    <textarea id="comentarioInput" rows="4" style="width: 100%; border-radius: 8px; padding: 10px;"></textarea>
+    <br /><br />
+    <button onclick="agregarComentario()" style="background-color: #FF8C00; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer;">Enviar Comentario</button>
+    <button onclick="borrarComentarios()" style="background-color: #b00000; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; margin-left: 10px;">Borrar Todo</button>
+    <div id="comentariosLista" style="margin-top: 20px; text-align: left;"></div>
+  </div>
+</div>
+
+
+  </div>
+
+  <script>
+    const welcome = document.getElementById("welcome");
+    const contenido = document.getElementById("contenido");
+
+    function fadeIn(element) {
+      element.style.display = 'block';
+      setTimeout(() => element.classList.add('show'), 10);
+    }
+
+    function fadeOut(element) {
+      element.classList.remove('show');
+      setTimeout(() => element.style.display = 'none', 500);
+    }
+
+    function ingresar() {
+      fadeOut(welcome);
+      fadeIn(contenido);
+      mostrarSeccion('menu');
+      history.pushState({ screen: 'contenido', section: 'menu' }, '', '#menu');
+    }
+
+    function mostrarSeccion(id) {
+      document.querySelectorAll('.section').forEach(sec => {
+        fadeOut(sec);
+      });
+      setTimeout(() => {
+        const seccion = document.getElementById(id);
+        fadeIn(seccion);
+    
+        // Mostrar los comentarios si es la sección de comentarios
+        if (id === "comentarios") {
+          mostrarComentarios();
+        }
+      }, 500);
+    
+      history.pushState({ screen: 'contenido', section: id }, '', '#' + id);
+    }
+    
+
+    window.addEventListener('popstate', function(event) {
+      if (event.state) {
+        if (event.state.screen === 'contenido') {
+          fadeOut(welcome);
+          fadeIn(contenido);
+          setTimeout(() => {
+            document.querySelectorAll('.section').forEach(sec => fadeOut(sec));
+            setTimeout(() => {
+              fadeIn(document.getElementById(event.state.section));
+            }, 500);
+          }, 500);
+        } else if (event.state.screen === 'welcome') {
+          fadeOut(contenido);
+          fadeIn(welcome);
+        }
+      } else {
+        // Si no hay estado, volver a bienvenida
+        fadeOut(contenido);
+        fadeIn(welcome);
+      }
+    });
+
+    window.onload = () => {
+      if (location.hash === "#menu" || location.hash === "#ubicaciones") {
+        fadeOut(welcome);
+        fadeIn(contenido);
+        setTimeout(() => fadeIn(document.getElementById(location.hash.substring(1))), 500);
+        history.replaceState({ screen: 'contenido', section: location.hash.substring(1) }, '', location.hash);
+      } else {
+        fadeIn(welcome);
+        history.replaceState({ screen: 'welcome' }, '', location.pathname);
+      }
+    };
+    function agregarComentario() {
+      const input = document.getElementById("comentarioInput");
+      const texto = input.value.trim();
+    
+      if (texto !== "") {
+        const comentarios = JSON.parse(localStorage.getItem("comentarios")) || [];
+        comentarios.push(texto);
+        localStorage.setItem("comentarios", JSON.stringify(comentarios));
+        input.value = "";
+        mostrarComentarios();
+      }
+    }
+    
+    function mostrarComentarios() {
+      const lista = document.getElementById("comentariosLista");
+      const comentarios = JSON.parse(localStorage.getItem("comentarios")) || [];
+      lista.innerHTML = "";
+    
+      comentarios.forEach(texto => {
+        const comentarioDiv = document.createElement("div");
+        comentarioDiv.style.background = "#fff";
+        comentarioDiv.style.color = "#333";
+        comentarioDiv.style.padding = "10px";
+        comentarioDiv.style.marginBotto = "10px";
+        comentarioDiv.style.borderRadius = "8px";
+        comentarioDiv.textContent = texto;
+        lista.appendChild(comentarioDiv);
+      });
+    }
+    
+    function borrarComentarios() {
+      if (confirm("¿Estás seguro de borrar todos los comentarios?")) {
+        localStorage.removeItem("comentarios");
+        mostrarComentarios();
+      }
+    }
+    
+  </script>
+
+</body>
+</html>
