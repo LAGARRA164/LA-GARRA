@@ -409,6 +409,39 @@
       }
     };
   </script>
-  
+  <!-- Comentarios (HTML) -->
+<div id="comentarios-container"></div>
+
+<textarea id="comentario" placeholder="Escribe tu comentario aquí..."></textarea><br>
+<button onclick="guardarComentario()">Enviar comentario</button>
+
+<script>
+  function guardarComentario() {
+    const comentario = document.getElementById("comentario").value.trim();
+    if (comentario === "") return;
+
+    let comentarios = JSON.parse(localStorage.getItem("comentarios")) || [];
+    comentarios.push(comentario);
+    localStorage.setItem("comentarios", JSON.stringify(comentarios));
+    document.getElementById("comentario").value = "";
+    mostrarComentarios();
+  }
+
+  function mostrarComentarios() {
+    const contenedor = document.getElementById("comentarios-container");
+    const comentarios = JSON.parse(localStorage.getItem("comentarios")) || [];
+    contenedor.innerHTML = ""; // Limpiar comentarios previos
+
+    comentarios.forEach((comentario, index) => {
+      const div = document.createElement("div");
+      div.innerHTML = `<strong>${index + 1}. Comentario:</strong><br>${comentario}<hr>`;
+      contenedor.appendChild(div);
+    });
+  }
+
+  // Mostrar comentarios al cargar la página
+  mostrarComentarios();
+</script>
+
 </body>
 </html>
