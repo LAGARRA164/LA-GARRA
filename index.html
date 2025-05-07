@@ -386,13 +386,19 @@
         let index = 1; // <-- NUEVA línea para numeración
 
         snapshot.forEach((child) => {
+          const datos = child.val();
+          const texto = datos.texto || "Sin contenido";
+          const fecha = datos.fecha || "Sin fecha";
           const div = document.createElement("div");
           div.style.background = "#fff";
           div.style.color = "#333";
           div.style.padding = "10px";
           div.style.marginBottom = "10px";
           div.style.borderRadius = "8px";
-          div.textContent = `Comentario ${index}: ${child.val()}`;
+          div.innerHTML = `
+        <strong>Comentario ${index}:</strong> ${texto}<br>
+        <small style="color: gray;">📅 ${fecha}</small>
+      `;
           lista.appendChild(div);
           index++; // <-- Aumenta número
         });
