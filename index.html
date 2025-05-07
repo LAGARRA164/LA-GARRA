@@ -367,16 +367,26 @@
     const db = getDatabase(app);
     const comentariosRef = ref(db, "comentarios");
   
-    // Agregar comentario a Firebase
-    window.agregarComentario = function () {
-      const input = document.getElementById("comentarioInput");
-      const texto = input.value.trim();
-  
-      if (texto !== "") {
-        push(comentariosRef, texto);
-        input.value = "";
-      }
+    // Agregar comentario a Firebase con fecha y hora
+window.agregarComentario = function () {
+  const input = document.getElementById("comentarioInput");
+  const texto = input.value.trim();
+
+  if (texto !== "") {
+    const ahora = new Date();
+    const fechaFormateada = ahora.toLocaleDateString("es-PE");
+    const horaFormateada = ahora.toLocaleTimeString("es-PE");
+
+    const comentarioConFecha = {
+      texto: texto,
+      fecha: `${fechaFormateada} ${horaFormateada}`
     };
+
+    push(comentariosRef, comentarioConFecha);
+    input.value = "";
+  }
+};
+
   
     // Mostrar comentarios desde Firebase
     function mostrarComentarios() {
