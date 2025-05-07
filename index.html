@@ -217,7 +217,7 @@
     <h2>Métodos de Pago</h2>
     <p>Escanea el siguiente código QR para realizar tu pago vía yape o plin:</p>
     <img src="https://i.postimg.cc/Yq0h8mX7/qr-izapay.jpg" alt="QR de pago" style="max-width: 300px; width: 100%; margin: 20px 0;" />
-    <p><strong>Nombre:</strong> LA GARRA</p>
+    <p><strong>Nombre:</strong> DIMAS FABIAN </p>
     <p><strong>Celular:</strong> <a href="https://wa.me/51927642164?text=Hola,%20quiero%20hacer%20un%20pedido" target="_blank">927642164</a></p>
     <p>💬 Enviar captura del pago por WhatsApp después de escanear.</p>
     
@@ -349,6 +349,66 @@
     }
     
   </script>
-
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { getDatabase, ref, push, onValue, remove } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-database.js";
+  
+    const firebaseConfig = {
+      apiKey: "AIzaSyDDr3sf_VRG7sx2r8lOJibk0PgB7EiSS6Q",
+      authDomain: "la-garra-24bb8.firebaseapp.com",
+      databaseURL: "https://la-garra-24bb8-default-rtdb.firebaseio.com/",
+      projectId: "la-garra-24bb8",
+      storageBucket: "la-garra-24bb8.appspot.com",
+      messagingSenderId: "450289977395",
+      appId: "1:450289977395:web:d0583b73b01511f7aabb46"
+    };
+  
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+    const comentariosRef = ref(db, "comentarios");
+  
+    // Agregar comentario a Firebase
+    window.agregarComentario = function () {
+      const input = document.getElementById("comentarioInput");
+      const texto = input.value.trim();
+  
+      if (texto !== "") {
+        push(comentariosRef, texto);
+        input.value = "";
+      }
+    };
+  
+    // Mostrar comentarios desde Firebase
+    function mostrarComentarios() {
+      const lista = document.getElementById("comentariosLista");
+      onValue(comentariosRef, (snapshot) => {
+        lista.innerHTML = "";
+        snapshot.forEach((child) => {
+          const div = document.createElement("div");
+          div.style.background = "#fff";
+          div.style.color = "#333";
+          div.style.padding = "10px";
+          div.style.marginBottom = "10px";
+          div.style.borderRadius = "8px";
+          div.textContent = child.val();
+          lista.appendChild(div);
+        });
+      });
+    }
+  
+    window.mostrarComentarios = mostrarComentarios;
+  
+    // Borrar comentarios solo si el usuario es administrador
+    window.borrarComentarios = function () {
+      const password = prompt("Escribe la clave para borrar los comentarios:");
+      if (password === "lagarra2024") {  // ← Puedes cambiar esta clave secreta
+        remove(comentariosRef);
+        alert("Todos los comentarios han sido borrados.");
+      } else {
+        alert("Clave incorrecta. No tienes permiso.");
+      }
+    };
+  </script>
+  
 </body>
 </html>
